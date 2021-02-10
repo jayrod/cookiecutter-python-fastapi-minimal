@@ -1,13 +1,11 @@
 from fastapi import Depends, FastAPI
-from {{cookiecutter.project_slug}}.dependencies import get_query_token 
 from {{cookiecutter.project_slug}}.routers import users
 from uuid import uuid4
 
 app = FastAPI(
     title="{{cookiecutter.api_title}}",
     description="{{cookiecutter.description}}",
-    version="{{cookiecutter.version}}",
-    dependencies=[Depends(get_query_token)]
+    version="{{cookiecutter.version}}"
 )
 
 app.include_router(users.router)
