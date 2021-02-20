@@ -1,6 +1,7 @@
 from fastapi import Depends, FastAPI
 from {{cookiecutter.project_slug}}.routers import users
 from uuid import uuid4
+from starlette.responses import RedirectResponse
 
 app = FastAPI(
     title="{{cookiecutter.api_title}}",
@@ -12,7 +13,8 @@ app.include_router(users.router)
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    response = RedirectResponse(url='/docs')
+    return response
 
 @app.get("/start")
 async def start_action():
